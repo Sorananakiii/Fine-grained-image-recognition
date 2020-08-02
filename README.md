@@ -7,12 +7,7 @@ Fine-grained-image-recognition is a classification task where sub-category visua
 
 # Dataset
 ---
-|Dataset	      |Num Classes	|Avg samples Per Class	
-|Flowers-102	  |102	        |10	
-|CUB-200-2011	  |200	        |29.97	
-|Stanford Cars [Download Stanford Car Dataset here]	|196	        |41.55	
-|Aircrafts	    |100	        |100	
-|Stanford Dogs	  |120	        |100	
+
 1.FGVC Aircraft [Maji et al., 2013] [Download Stanford Car Dataset here]
   
 2.Stanford Car [Krause et al., 2013]
@@ -22,7 +17,6 @@ Fine-grained-image-recognition is a classification task where sub-category visua
 4.CUB200-2011 [Wah et al., 2011]
 
 
-  
 Starting with image classification basic workflow
   1. Transfer learning with ResNet101
   
