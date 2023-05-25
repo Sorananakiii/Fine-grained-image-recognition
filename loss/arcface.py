@@ -1,3 +1,10 @@
+import math
+import torch
+import torch.nn.functional as F
+import torch.nn as nn
+from torch.nn import Parameter
+from torch.autograd import Variable
+
 class ArcMarginProduct(nn.Module):
     r"""Implement of large margin arc distance: :
         Args:
@@ -37,8 +44,7 @@ class ArcMarginProduct(nn.Module):
         one_hot = torch.zeros(cosine.size(), device='cuda')
         one_hot.scatter_(1, label.view(-1, 1).long(), 1)
         # -------------torch.where(out_i = {x_i if condition_i else y_i) -------------
-        output = (one_hot * phi) + ((1.0 - one_hot) * cosine)  # you can use torch.where if your torch.__version__ is 0.4
+        output = (one_hot * phi) + ((1.0 - one_hot) * cosine)
         output *= self.s
-        # print(output)
 
         return cosine, output

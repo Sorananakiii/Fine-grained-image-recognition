@@ -1,4 +1,9 @@
-
+import math
+import torch
+import torch.nn.functional as F
+import torch.nn as nn
+from torch.nn import Parameter
+from torch.autograd import Variable
 
 class AdaptiveAM(nn.Module):
     ''' version 1 : of AAM loss '''
@@ -14,7 +19,6 @@ class AdaptiveAM(nn.Module):
     def forward(self, input, label, epoch):
         #---------------------------- Margin Additional -----------------------------
         m1 = self.m1
-
         cos_m, sin_m = math.cos(m1), math.sin(m1)
         th = math.cos(math.pi - m1)
         mm = math.sin(math.pi - m1) * m1
@@ -26,7 +30,7 @@ class AdaptiveAM(nn.Module):
         one_hot = torch.zeros(cosine.size()).to(device)
         one_hot.scatter_(1, label.view(-1, 1).long(), 1)
 
-        addin = (onehot * m1 * angle) + ((1.0 - one_hot) * angle) 
+        addin = (one_hot * m1 * angle) + ((1.0 - one_hot) * angle) 
         # --------------------------- fixed to Q1 ---------------------------
         # phi = torch.where(cosine > th, phi, torch.zeros(1).to(device))
         output = torch.norm(input, dim=0) * torch.cos(addin)
