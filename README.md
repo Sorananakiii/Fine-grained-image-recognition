@@ -15,7 +15,7 @@ Fine-grained-image-recognition is a classification task where sub-category visua
 
 
 Starting with image classification basic workflow
-  1. Transfer learning with ResNet101
+  1. Transfer learning with ResNet50
   
   
 # Reference

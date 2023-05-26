@@ -13,6 +13,8 @@ from scipy.special import binom
 
 
 
+
+
 class BaseModel(nn.Module):
     def __init__(self, model_name, pretrained=True):
         super().__init__()
@@ -40,10 +42,10 @@ class BaseModel(nn.Module):
 class Dense(nn.Module):
 
     def __init__(self):
-        super(Dense, self).__init__()
+        super().__init__()
 
         self.bn = nn.BatchNorm1d(2048)
-        self.fc = nn.Linear(2048, 600)
+        self.fc = nn.Linear(2048, 512)
 
     def forward(self, inputs: torch.Tensor):
 
